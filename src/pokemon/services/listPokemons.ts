@@ -4,7 +4,6 @@ export interface PokemonListInterface {
   url: string;
 }
 
-
 interface ListPokemonInterface {
   count: number;
   next: null | string;

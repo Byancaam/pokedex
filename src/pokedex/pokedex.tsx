@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { getPokemonDetails } from '../pokemon/services/getPokemonsDetails';
 import { listPokemon, PokemonListInterface } from '../pokemon/services/listPokemons';
 
 interface PokedexProps {}
@@ -21,9 +21,7 @@ export const Pokedex: React.FC<PokedexProps> = () => {
   useEffect(() => {
     if (!selectedPokemon) return;
 
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon.name}`)
-      .then(response => setSelectedPokemonDetails(response.data));
+    getPokemonDetails(selectedPokemon.name).then(response => setSelectedPokemonDetails(response));
   }, [selectedPokemon]);
 
   return (
