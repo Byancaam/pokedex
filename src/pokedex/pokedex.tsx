@@ -1,26 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { listPokemon, PokemonListInterface } from '../pokemon/services/listPokemons';
 
 interface PokedexProps {}
-
-interface PokemonListInterface {
-  name: string;
-  url: string;
-}
 
 export const Pokedex: React.FC<PokedexProps> = () => {
   const [pokemons, setPokemons] = useState<PokemonListInterface[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<
     PokemonListInterface | undefined
   >(undefined);
+
   const [selectedPokemonDetails, setSelectedPokemonDetails] = useState<
     any | undefined
   >(undefined);
 
   useEffect(() => {
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon')
-      .then(response => setPokemons(response.data.results));
+    listPokemon().then(response => setPokemons(response.results));
   }, []);
 
   useEffect(() => {
