@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { PokemonDetail } from '../pokemon/interfaces/pokemonDetail';
 import { getPokemonDetails } from '../pokemon/services/getPokemonsDetails';
 import { listPokemon, PokemonListInterface } from '../pokemon/services/listPokemons';
 
@@ -11,7 +12,7 @@ export const Pokedex: React.FC<PokedexProps> = () => {
   >(undefined);
 
   const [selectedPokemonDetails, setSelectedPokemonDetails] = useState<
-    any | undefined
+  PokemonDetail | undefined
   >(undefined);
 
   useEffect(() => {

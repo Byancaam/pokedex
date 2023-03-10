@@ -11,7 +11,7 @@ interface ListPokemonInterface {
 }
 
 export async function listPokemon (): Promise<ListPokemonInterface> {
-  const endpoint = 'https://pokeapi.co/api/v2/pokemon';
+  const endpoint = `${process.env.REACT_APP_POKEAPI}/pokemon`;
 
   const response = await axios.get<ListPokemonInterface>(endpoint)
 
